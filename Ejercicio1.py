@@ -20,6 +20,15 @@ driver.find_element(By.CLASS_NAME, "auth-form__button").click()
 WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "header__user")))
 # Comprobar que la URL actual es 'https://around-v1.nm.tripleten-services.com/'
 assert driver.current_url == "https://around-v1.nm.tripleten-services.com/"
+#Desplazar el elemento a la vista
+footer = WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "footer")))
+driver.execute_script("arguments[0].scrollIntoView();", footer)
+# Comprobar que el pie de página contiene el string 'Around' (el completo es @2020 Around)
+assert 'Around' in footer.text
+
+# Usar el objeto de espera para obtener el botón de cierre de sesión y verificar que su texto sea 'Cerrar sesión'
+logout = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "header__logout"))).text
+assert logout == 'Cerrar sesión'
 
 
 
