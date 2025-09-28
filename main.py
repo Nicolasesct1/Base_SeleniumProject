@@ -15,7 +15,7 @@ driver.get("https://around-v1.nm.tripleten-services.com/signin?lng=es")
 time.sleep(1) #poner siempre despues el time sleep antes del link para poder buscar objetos
 #current_url = driver.current_url #obtener la url actual en el que estoy
 #assert current_url == 'https://www.google.com/' #comprueba la totalidad de la url
-#assert '/signin' in current_url #comprueba solo una parte de la url como si fuera solo google
+#assert '/signin' in current_url #comprueba solo una parte de la url como si fuera solo google sin el .com
 button_login = driver.find_element(By.CSS_SELECTOR, ".auth-form__button") #Buscar el titulo
 print("Login from tittle:", button_login.text) #imprimir el texto
 button_login.click() #hacer clic en el boton con el titulo inciar sesion
